@@ -1,0 +1,39 @@
+{
+	"name": "fileview_gallery_example",
+	"version": "1.0.0",
+	"description": "Example gallery — one pict-section-fileview instance per media type (text, code, markdown, raster image, vector image, and a download card)",
+	"main": "FileviewGallery-Example-Application.js",
+	"scripts": {
+		"start": "node FileviewGallery-Example-Application.js",
+		"build": "npx quack build && npx quack copy"
+	},
+	"author": "steven",
+	"license": "MIT",
+	"copyFilesSettings": {
+		"whenFileExists": "overwrite"
+	},
+	"copyFiles": [
+		{
+			"from": "./html/*",
+			"to": "./dist/"
+		},
+		{
+			"from": "../../node_modules/pict/dist/*",
+			"to": "./dist/"
+		}
+	],
+	"dependencies": {
+		"pict": "^1.0.348",
+		"pict-application": "^1.0.19",
+		"pict-provider": "^1.0.0",
+		"pict-view": "^1.0.66"
+	},
+	"retold": {
+		"ExampleApplication": {
+			"Stage": true,
+			"Title": "Fileview Gallery",
+			"Summary": "Six pict-section-fileview instances on one page, one per media type — text, JavaScript (code lens), markdown, a raster photo, a vector SVG, and a binary that degrades to the download card.",
+			"Complexity": "Basic"
+		}
+	}
+}

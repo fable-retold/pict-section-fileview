@@ -1,0 +1,31 @@
+sequenceDiagram
+    participant Browser
+    participant Server as Orator Server
+    participant Auth as OratorAuthentication
+    participant Provider as OAuth Provider<br/>(Google, Microsoft, etc.)
+
+    Browser->>Server: GET /1.0/OAuth/Begin/google
+    Server->>Auth: _handleOAuthBegin('google')
+    Auth->>Auth: Generate state, nonce, PKCE code_verifier
+    Auth->>Auth: Store in _oauthStateStore (5 min TTL)
+    Auth->>Auth: Initialize provider (lazy, cached)
+    Auth->>Provider: Build authorization URL
+    Provider-->>Auth: Authorization URL
+    Auth->>Server: 302 Redirect
+    Server-->>Browser: Redirect to provider login page
+
+    Browser->>Provider: User authenticates
+    Provider-->>Browser: Redirect to /1.0/OAuth/Callback/google?code=...&state=...
+
+    Browser->>Server: GET /1.0/OAuth/Callback/google?code=ABC&state=XYZ
+    Server->>Auth: _handleOAuthCallback('google')
+    Auth->>Auth: _consumeOAuthState(state) - validate & delete
+    Auth->>Provider: Exchange code for tokens (with PKCE verifier)
+    Provider-->>Auth: {Claims, Tokens}
+    Auth->>Auth: _oauthUserMapper(claims, tokens) -> UserRecord
+    Auth->>Auth: _createSession(userRecord) + store OAuthTokens
+    Auth->>Server: Set-Cookie, 302 Redirect to post-login URL
+    Server-->>Browser: Redirect to application
+
+    Browser->>Server: GET /1.0/CheckSession (Cookie: SessionID=xxx)
+    Server-->>Browser: {LoggedIn: true, UserRecord} (same as password login)

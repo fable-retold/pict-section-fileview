@@ -1,0 +1,8 @@
+{
+    "EntrypointInputSourceFile": "/Users/steven/Code/retold/modules/pict/pict-section-fileview/example_applications/fileview_browser/FileviewBrowser-Example-Application.js",
+    "LibraryObjectName": "FileviewBrowserExample",
+    "LibraryOutputFolder": "/Users/steven/Code/retold/modules/pict/pict-section-fileview/example_applications/fileview_browser/dist/",
+    "LibraryUniminifiedFileName": "fileview_browser_example.compatible.js",
+    "LibraryMinifiedFileName": "fileview_browser_example.compatible.min.js",
+    "BrowserifyIgnore": []
+}

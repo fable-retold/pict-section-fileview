@@ -1,0 +1,39 @@
+{
+	"name": "fileview_browser_example",
+	"version": "1.0.0",
+	"description": "Example file browser — one pict-section-fileview instance driven by a clickable file list (live type dispatch, same-kind reuse, type-switch teardown)",
+	"main": "FileviewBrowser-Example-Application.js",
+	"scripts": {
+		"start": "node FileviewBrowser-Example-Application.js",
+		"build": "npx quack build && npx quack copy"
+	},
+	"author": "steven",
+	"license": "MIT",
+	"copyFilesSettings": {
+		"whenFileExists": "overwrite"
+	},
+	"copyFiles": [
+		{
+			"from": "./html/*",
+			"to": "./dist/"
+		},
+		{
+			"from": "../../node_modules/pict/dist/*",
+			"to": "./dist/"
+		}
+	],
+	"dependencies": {
+		"pict": "^1.0.348",
+		"pict-application": "^1.0.19",
+		"pict-provider": "^1.0.0",
+		"pict-view": "^1.0.66"
+	},
+	"retold": {
+		"ExampleApplication": {
+			"Stage": true,
+			"Title": "Fileview Browser",
+			"Summary": "A single pict-section-fileview embedded in an app shell and driven by a file list — clicking a file re-points the viewer, which dispatches to the right lens, reuses the live child on a same-kind re-point, and tears it down on a type switch.",
+			"Complexity": "Intermediate"
+		}
+	}
+}

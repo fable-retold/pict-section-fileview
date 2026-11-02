@@ -1,0 +1,8 @@
+{
+    "EntrypointInputSourceFile": "/Users/steven/Code/retold/modules/pict/pict-section-fileview/example_applications/fileview_gallery/FileviewGallery-Example-Application.js",
+    "LibraryObjectName": "FileviewGalleryExample",
+    "LibraryOutputFolder": "/Users/steven/Code/retold/modules/pict/pict-section-fileview/example_applications/fileview_gallery/dist/",
+    "LibraryUniminifiedFileName": "fileview_gallery_example.compatible.js",
+    "LibraryMinifiedFileName": "fileview_gallery_example.compatible.min.js",
+    "BrowserifyIgnore": []
+}
