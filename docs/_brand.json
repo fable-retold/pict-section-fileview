@@ -1,0 +1,18 @@
+{
+	"Hash": "pict-section-fileview",
+	"Name": "Pict Section Fileview",
+	"Tagline": "Universal, embeddable quality file viewer — detect a file’s type and render it well.",
+	"Palette": "mix",
+	"Icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 96 96\" width=\"96\" height=\"96\"><path d=\"M 24 2 H 72 Q 94 2 94 24 V 72 Q 94 94 72 94 H 24 Q 2 94 2 72 V 24 Q 2 2 24 2 Z\" fill=\"#5650E6\"/><text x=\"48\" y=\"52\" text-anchor=\"middle\" dominant-baseline=\"central\" font-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\" font-size=\"26\" font-weight=\"700\" fill=\"#ffffff\" letter-spacing=\"-1\">PSF</text></svg>",
+	"IconType": "svg",
+	"Favicon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 96 96\" width=\"96\" height=\"96\"><path d=\"M 24 2 H 72 Q 94 2 94 24 V 72 Q 94 94 72 94 H 24 Q 2 94 2 72 V 24 Q 2 2 24 2 Z\" fill=\"#5650E6\"/><text x=\"48\" y=\"52\" text-anchor=\"middle\" dominant-baseline=\"central\" font-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\" font-size=\"60\" font-weight=\"800\" fill=\"#ffffff\" letter-spacing=\"-1\">F</text></svg>",
+	"FaviconDark": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 96 96\" width=\"96\" height=\"96\"><path d=\"M 24 2 H 72 Q 94 2 94 24 V 72 Q 94 94 72 94 H 24 Q 2 94 2 72 V 24 Q 2 2 24 2 Z\" fill=\"#9A95F5\"/><text x=\"48\" y=\"52\" text-anchor=\"middle\" dominant-baseline=\"central\" font-family=\"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif\" font-size=\"60\" font-weight=\"800\" fill=\"#101418\" letter-spacing=\"-1\">F</text></svg>",
+	"Colors": {
+		"Primary": "#5650E6",
+		"Secondary": "#E76F51",
+		"PrimaryLight": "#5650E6",
+		"PrimaryDark": "#9A95F5",
+		"SecondaryLight": "#E76F51",
+		"SecondaryDark": "#E76F51"
+	}
+}

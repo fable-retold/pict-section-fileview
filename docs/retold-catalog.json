@@ -1,0 +1,97 @@
+{
+	"Generated": "2026-11-02T16:06:25.236Z",
+	"Mode": "module",
+	"GitHubOrg": "fable-retold",
+	"DefaultBranch": "master",
+	"Module": {
+		"Name": "pict-section-fileview",
+		"Repo": "pict-section-fileview",
+		"Group": "",
+		"Branch": "master",
+		"HasDocs": true,
+		"HasCover": true,
+		"Sidebar": [
+			{
+				"Title": "Getting Started",
+				"Children": [
+					{
+						"Title": "Overview",
+						"Path": "README.md"
+					},
+					{
+						"Title": "Configuration",
+						"Path": "configuration.md"
+					},
+					{
+						"Title": "Architecture",
+						"Path": "architecture.md"
+					}
+				]
+			},
+			{
+				"Title": "Retold Ecosystem",
+				"Children": [
+					{
+						"Title": "Pict",
+						"Path": "https://fable-retold.github.io/pict/README.md"
+					},
+					{
+						"Title": "Pict View",
+						"Path": "https://fable-retold.github.io/pict-view/README.md"
+					},
+					{
+						"Title": "Pict Provider",
+						"Path": "https://fable-retold.github.io/pict-provider/README.md"
+					},
+					{
+						"Title": "Pict Section Fileview",
+						"Path": "https://fable-retold.github.io/pict-section-fileview/README.md"
+					},
+					{
+						"Title": "Orator File Service",
+						"Path": "https://fable-retold.github.io/orator-file-service/README.md"
+					},
+					{
+						"Title": "Fable",
+						"Path": "https://fable-retold.github.io/fable/README.md"
+					}
+				]
+			}
+		],
+		"DocFiles": [
+			"README.md",
+			"_brand.json",
+			"_cover.md",
+			"_sidebar.md",
+			"architecture.md",
+			"configuration.md",
+			"examples/README.md",
+			"examples/fileview_browser/README.md",
+			"examples/fileview_browser/codejar.js",
+			"examples/fileview_browser/dataset.zip",
+			"examples/fileview_browser/diagram.svg",
+			"examples/fileview_browser/fileview_browser_example.min.js",
+			"examples/fileview_browser/index.html",
+			"examples/fileview_browser/landscape.jpg",
+			"examples/fileview_browser/notes.md",
+			"examples/fileview_browser/panorama.jpg",
+			"examples/fileview_browser/portrait.png",
+			"examples/fileview_browser/readme.txt",
+			"examples/fileview_gallery/README.md",
+			"examples/fileview_gallery/codejar.js",
+			"examples/fileview_gallery/cover.jpg",
+			"examples/fileview_gallery/dataset.zip",
+			"examples/fileview_gallery/diagram.svg",
+			"examples/fileview_gallery/fileview_gallery_example.min.js",
+			"examples/fileview_gallery/index.html",
+			"examples/fileview_gallery/landscape.jpg",
+			"examples/fileview_gallery/notes.md",
+			"examples/fileview_gallery/poster.jpg",
+			"examples/fileview_gallery/readme.txt",
+			"examples/fileview_gallery/sample.mp3",
+			"examples/fileview_gallery/sample.mp4",
+			"examples/fileview_gallery/sample.pdf"
+		]
+	},
+	"Groups": []
+}
