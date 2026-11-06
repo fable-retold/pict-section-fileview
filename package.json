@@ -1,6 +1,6 @@
 {
     "name": "pict-section-fileview",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A universal, embeddable file viewer: one control that detects a file's type (from a Sluice record or a bare range-served URL) and dispatches it to the right renderer — code, markdown, images (ordinary + enormous), PDF, video and audio — delegating each media kind to a purpose-built child section.",
     "main": "source/Pict-Section-Fileview.js",
     "scripts": {

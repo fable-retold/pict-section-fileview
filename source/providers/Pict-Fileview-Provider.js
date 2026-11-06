@@ -470,6 +470,22 @@ class PictFileviewProvider extends libPictProvider
 		this.pict.ContentAssignment.assignContent(this.toolbarSelector, tmpHTML);
 	}
 
+	/**
+	 * True when the stage element exists AND still holds mounted content. The reuse-one-per-kind fast-paths in
+	 * _mountResolved() assume the previously mounted DOM is still on the page -- but a host that re-stamps our mount
+	 * point on its own re-render (e.g. the fileview host div lives inside the consumer view's template, so every
+	 * consumer render() wipes it) leaves _currentHandle pointing at detached nodes. There "same descriptor -> return"
+	 * and the in-place update() would both paint nothing (blank stage). When the stage was wiped this returns false so
+	 * _mountResolved falls through to a clean destroy + re-mount. DOM-less contexts (SSR / unit tests) report true so
+	 * they never force a churn the environment cannot observe.
+	 */
+	_isStagePopulated()
+	{
+		if (typeof document === 'undefined') { return true; }
+		let tmpStageElement = document.querySelector(this.stageSelector);
+		return !!(tmpStageElement && tmpStageElement.children && tmpStageElement.children.length > 0);
+	}
+
 	_mountResolved()
 	{
 		const tmpStage = this.stageSelector;
@@ -499,11 +515,15 @@ class PictFileviewProvider extends libPictProvider
 		}
 
 		// Reuse-one-per-kind. Pict has no removeView, so re-minting a child per file leaks views/observers. When
-		// the resolved renderer is the one already mounted:
+		// the resolved renderer is the one already mounted AND its mounted DOM is still on the page:
 		//   - same descriptor identity (a bare re-render) → nothing to do;
 		//   - new file, renderer exposes update() → re-feed the live child in place, no teardown;
 		//   - otherwise → fall through to a clean destroy + re-mount.
-		if (this._currentHandle && this._currentHandle.Hash === tmpRenderer.Hash)
+		// The _isStagePopulated() guard is essential: a consumer that re-stamps our host on its own re-render wipes the
+		// stage out from under us, detaching the mounted child. Without the guard both fast-paths leave a blank stage;
+		// with it we fall through to a re-mount and repaint. (A consumer with a stable host never trips it, so normal
+		// file-to-file switching still reuses the child via update() with no churn.)
+		if (this._currentHandle && this._currentHandle.Hash === tmpRenderer.Hash && this._isStagePopulated())
 		{
 			if (this._currentHandle.Descriptor === this._descriptor) { return; }
 			if (typeof this._currentHandle.update === 'function')

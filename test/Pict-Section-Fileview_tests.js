@@ -416,6 +416,31 @@ suite('Pict-Section-Fileview', () =>
 			Expect(tmpStage.innerHTML).to.contain('1 MB');
 		});
 
+		// Regression: a consumer whose own template owns the fileview host (so every consumer re-render re-stamps it)
+		// wipes the stage DOM out from under a live mount. The reuse-one-per-kind fast-path must NOT short-circuit on
+		// the now-stale handle; _isStagePopulated() detects the empty stage and forces a clean re-mount + repaint.
+		test('re-mounts when the stage DOM was wiped out from under a live mount (same descriptor)', () =>
+		{
+			document.body.innerHTML = '<div id="WipeHost"></div>';
+			const tmpPict = new libPict();
+			libFileview.createFileview(tmpPict, { Identifier: 'WipeFileView', DestinationAddress: '#WipeHost', Probe: false });
+			tmpPict.views.WipeFileView.render();
+			const tmpProvider = tmpPict.providers.WipeFileView;
+			tmpProvider.setFile({ Name: 'archive.zip', Size: 1048576, MIMEType: 'application/zip', URL: 'https://host/archive.zip' });
+
+			const tmpStage = document.getElementById('WipeFileView-Stage');
+			Expect(tmpStage.innerHTML).to.contain('archive.zip');   // first mount painted
+
+			// Simulate the host-owning consumer re-rendering: the stage is emptied while _currentHandle still points at it.
+			tmpStage.innerHTML = '';
+			Expect(tmpStage.children.length).to.equal(0);
+
+			// Resolve again with the SAME descriptor (a bare re-render). Pre-fix this hit "same descriptor -> return"
+			// and left the stage blank; the _isStagePopulated() guard forces a re-mount.
+			tmpProvider._mountResolved();
+			Expect(tmpStage.innerHTML).to.contain('archive.zip');   // re-painted, not blank
+		});
+
 		test('the text lens fetches and paints the file into a <pre>', (pDone) =>
 		{
 			document.body.innerHTML = '<div id="TextHost"></div>';
